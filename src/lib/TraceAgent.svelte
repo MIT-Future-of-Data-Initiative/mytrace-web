@@ -2,6 +2,8 @@
   
   export let issues = [];
   import TaxonomyLink from "$lib/TaxonomyLink.svelte";
+  import { base } from '$app/paths';
+  let showPopup = false;
 </script>
 <div class="trace-agent" style="border-left-color: {issues.length > 0 ? 'red' : '#3399ff'}">
   <div class="trace-header">
@@ -14,22 +16,45 @@
     {#each issues as issue}
       <div>
         {#if issue.highlight.includes("TPDSA")}
-          <p class="trace-message">
-            You never received a privacy notice, consented, nor were given a way to opt out of <b>{issue.expected}</b> processing your sensitive data. This is in violation of <b>TPDSA 541.101(b)(4)</b> (consent), <b>TPDSA 541.102(a)(1) and 541.102(b)</b> (privacy notice), and <b>TPDSA 541.103</b> (opt-out).
+          <p class="trace-message clickable" on:click={() => showPopup = true}>
+            6 violations of Texas law
           </p>
         {:else if issue.highlight.includes("Tex Ins Code")}
-          <p class="trace-message">
-            <b>Allstate</b> used sensitive data that <b>Arity</b> collected illegally. This is in violation of the <b>Texas Insurance Code 541.001</b>.
+          <p class="trace-message clickable" on:click={() => showPopup = true}>
+            1 violation of Texas law
           </p>
         {:else}
           <p class="trace-message">
             Your data was used for <b><TaxonomyLink term={issue.found} /></b><br />
             when you only allowed use for <b><TaxonomyLink term={issue.expected} /></b>.
+            
+            <button class="report-button">
+              Report This
+            </button>
           </p>
         {/if}
-        <button class="report-button">
-          Report This
-        </button>
+        {#if showPopup}
+            <div class="popup" on:click|stopPropagation>
+                  {#if issue.highlight.includes("TPDSA")}
+                    <p>
+                      You never received a privacy notice, consented, nor were given a way to opt out of <b>{issue.expected}</b> processing your sensitive data. This is in violation of <b>TPDSA 541.101(b)(4)</b> (consent), <b>TPDSA 541.102(a)(1) and 541.102(b)</b> (privacy notice), and <b>TPDSA 541.103</b> (opt-out).
+                    </p>
+
+                  {:else if issue.highlight.includes("Tex Ins Code")}
+                    <p>
+                      <b>Allstate</b> used sensitive data that <b>Arity</b> collected illegally. This is in violation of the <b>Texas Insurance Code 541.001</b>.
+                    </p>
+                  {/if}
+              <button class="close-button" on:click={() => showPopup = false}>×</button>
+              <button class="report-button">
+                Report This
+              </button>
+            </div>
+        {/if}
+        
+          <a href="{base}/config-ta" class="card-footer">
+              Not in Texas? Configure TraceAgent
+            </a>
       </div>
     {/each}
   {/if}
@@ -57,5 +82,38 @@
 }
 .trace-message {
   margin: 0;
+}
+.clickable {
+  cursor: pointer;
+  font-weight: bold;
+  color: red;               
+  text-decoration: none;
+}
+.clickable:hover {                
+  text-decoration: underline;
+}
+
+.popup {
+  position: relative;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+.close-button {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-button:hover {
+  color: black;
 }
 </style>
