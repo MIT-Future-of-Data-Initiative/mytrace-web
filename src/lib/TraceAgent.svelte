@@ -13,10 +13,13 @@
   {:else}
     {#each issues as issue}
       <div>
-        {#if issue.highlight.includes("controller")}
+        {#if issue.highlight.includes("TPDSA")}
           <p class="trace-message">
-            Your data was used by <b>{issue.expected}</b><br />
-            when your agreement only allows use by <b>{issue.found}</b>.
+            You never received a privacy notice, consented, nor were given a way to opt out of <b>{issue.expected}</b> processing your sensitive data. This is in violation of <b>TPDSA 541.101(b)(4)</b> (consent), <b>TPDSA 541.102(a)(1) and 541.102(b)</b> (privacy notice), and <b>TPDSA 541.103</b> (opt-out).
+          </p>
+        {:else if issue.highlight.includes("Tex Ins Code")}
+          <p class="trace-message">
+            <b>Allstate</b> used sensitive data that <b>Arity</b> collected illegally. This is in violation of the <b>Texas Insurance Code 541.001</b>.
           </p>
         {:else}
           <p class="trace-message">

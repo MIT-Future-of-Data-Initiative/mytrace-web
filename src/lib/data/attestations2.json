@@ -221,5 +221,83 @@
       "dataUses": [116]
     },
     "body": "profiled your driving behavior"
+  },
+  {
+    "timestamp": "10/08/2025 18:39:00",
+    "id": 118,
+    "party": "Arity",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#data-define",
+      "dataType": "https://nicolatl.github.io/mytrace-web/ontology#driving-behavior",
+      "dataTypeOntology": "https://nicolatl.github.io/mytrace-web/ontology",
+      "controller": 101,
+      "subject": 4,
+      "start": "10/08/2025 18:39:00",
+      "end": "10/08/2026 18:39:00",
+      "receipt": 117
+    },
+    "body": "Arity defines a dataset comprising Jane Smith's driving behavior profile."
+  },
+  {
+    "timestamp": "10/10/2025 18:33:00",
+    "id": 119,
+    "party": "Allstate",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#term-define",
+      "data": 118,
+      "purpose": "https://nicolatl.github.io/mytrace-web/ontology#insurance-underwriting",
+      "purposeOntology": "https://nicolatl.github.io/mytrace-web/ontology"
+    },
+    "body": "Allstate defines a term to use Jane's driver profile from Arity for insurance underwriting"
+  },
+  {
+    "timestamp": "10/10/2025 18:34:00",
+    "id": 120,
+    "party": "Allstate",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#consent-request",
+      "controller": 100,
+      "subject": 4,
+      "terms": [119],
+      "expiry": "10/10/2026 18:34:00"
+    },
+    "body": "Allstate requests consent from Jane."
+  },
+  {
+    "timestamp": "10/10/2025 18:35:00",
+    "id": 121,
+    "party": "Jane Smith",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#consent-accept",
+      "consent": 120,
+      "controller": 100,
+      "subject": 4
+    },
+    "body": "Jane Smith accepts consent from Allstate"
+  },
+  {
+    "timestamp": "10/11/2025 18:35:00",
+    "id": 122,
+    "party": "Allstate",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#dataUse-use",
+      "basis": 121,
+      "data": 118,
+      "subject": 4,
+      "operation": "https://nicolatl.github.io/mytrace-web/ontology#insurance-underwriting",
+      "operationOntology": "https://nicolatl.github.io/mytrace-web/ontology"
+    },
+    "body": "Allstate uses Jane Smith’s data for insurance underwriting"
+  },
+  {
+    "timestamp": "10/11/2025 18:36:00",
+    "id": 123,
+    "party": "Allstate",
+    "context": {
+      "type": "https://nicolatl.github.io/mytrace-web/docs/1.0#dataReceipt-create",
+      "subject": 4,
+      "dataUses": [122]
+    },
+    "body": "raised your monthly insurance payment by $110"
   }
 ]

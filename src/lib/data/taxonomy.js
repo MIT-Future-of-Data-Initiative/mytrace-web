@@ -6,7 +6,15 @@ export const taxonomy = {
   },
   "https://nicolatl.github.io/mytrace-web/ontology#credit-decisioning": {
     label: "credit decisioning",
-    href: `${base}/extension/7`
+    href: `${base}/ontology#credit-decisioning`
+  },
+  "https://nicolatl.github.io/mytrace-web/ontology#insurance-underwriting": {
+    label: "insurance underwriting",
+    href: `${base}/ontology#insurance-underwriting`
+  },
+  "https://nicolatl.github.io/mytrace-web/ontology#driving-behavior": {
+    label: "Driving behavior profile",
+    href: `${base}/ontology#driving-behavior`
   },
   "https://ethyca.github.io/fideslang/taxonomy/data_categories/#:~:text=configuration%20and%20setting.-,user.payment,-user": {
     label: "User payments data",

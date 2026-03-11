@@ -36,7 +36,18 @@ export default async function traceAgent({ id }) {
     if(basis_controller != controller) {
       results.issues.push({
         dataUseId: dataUse.id,
-        highlight: ["controller","basis_controller"],
+        highlight: ["TPDSA"],
+        expected: controller,
+        found: basis_controller
+      });
+      return results
+    }
+
+    //ALLSTATE HERE
+    if(controller == "Allstate"){
+      results.issues.push({
+        dataUseId: dataUse.id,
+        highlight: ["Tex Ins Code"],
         expected: controller,
         found: basis_controller
       });
