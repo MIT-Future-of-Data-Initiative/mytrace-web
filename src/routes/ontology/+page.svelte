@@ -4,4 +4,12 @@
     <h2>Data use purpose: Credit Decisioning</h2>
     <p>This purpose category encompasses uses of data to determine consumer credit eligibility for financial products.</p>
     </div>
+    <div id="insurance-underwriting"> 
+    <h2>Data use purpose: Insurance Underwriting</h2>
+    <p>This purpose category encompasses evaluating the risk of insuring an applicant.</p>
+    </div>
+    <div id="driving-behavior"> 
+    <h2>Data type: Driving Behavior Profile</h2>
+    <p>This data category encompasses driving behavior metrics and related risk scores.</p>
+    </div>
 </div>

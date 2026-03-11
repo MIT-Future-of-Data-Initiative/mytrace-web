@@ -10,5 +10,6 @@ export const logos = {
   amazon: `${base}/logos/amazon.jpg`,
   google: `${base}/logos/google.webp`,
   gasbuddy: `${base}/logos/gasbuddy.jpg`,
-  arity: `${base}/logos/arity.jpg`
+  arity: `${base}/logos/arity.jpg`,
+  allstate: `${base}/logos/allstate.png`
 };

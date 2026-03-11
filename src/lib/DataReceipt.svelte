@@ -88,7 +88,6 @@
   onMount(async () => {
     const result = await traceAgent({ id: receiptId });
     issues = result.issues ?? [];
-    console.log(result);
   });
 </script>
 
@@ -124,7 +123,7 @@
                   <TaxonomyLink term={item.dataType} />
                 </div>
                 <div class="data-operation">
-                  Used for <TaxonomyLink term={item.usage} highlight={issues.find(issue => issue.dataUseId == item.id && issue.highlight.includes("operation"))} />
+                  Provided by {item.provider}
                 </div>
               </div>
             </div>
